@@ -1,0 +1,26 @@
+def max_count(m, n, ops):
+    # Initialize the matrix M with all zeros of size m x n
+    M = [[0] * n for _ in range(m)]
+
+    # Perform the operations on the matrix
+    for op in ops:
+        for x in range(op[0]):
+            for y in range(op[1]):
+                M[x][y] += 1
+
+    # Find the maximum value present in the matrix
+    max_val = 0
+    for row in M:
+        max_val = max(max_val, max(row))
+
+    # Count the number of occurrences of the maximum value in the matrix
+    count_max_val = sum(row.count(max_val) for row in M)
+
+    return count_max_val
+
+# Test the example provided
+m = 3
+n = 3
+ops = [[2, 2], [3, 3]]
+output = max_count(m, n, ops)
+print(output)  # Output: 4

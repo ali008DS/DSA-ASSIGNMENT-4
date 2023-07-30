@@ -1,0 +1,21 @@
+def find_complete_rows(n):
+    # Define the binary search function to find the largest k
+    def binary_search(left, right):
+        while left <= right:
+            mid = left + (right - left) // 2
+            total_coins_needed = (mid * (mid + 1)) // 2  # Sum of first 'mid' natural numbers
+            if total_coins_needed <= n:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return right
+
+    # Call the binary search function to find the largest k
+    return binary_search(0, n)
+
+# Test the example
+n = 5
+output = find_complete_rows(n)
+print(output)  # Output: 2
+[]
+[]
